@@ -14,6 +14,7 @@ for _ in range(M):
     relationship[a].append(b)
     relationship[b].append(a)
 
+
 def solution():
     global payment, MIN
 
