@@ -1,5 +1,6 @@
-import heapq
-T = int(input())
+import heapq, sys
+read = sys.stdin.readline
+T = int(read())
 
 def solution(order, num, i):
     if order == "I":
@@ -27,12 +28,12 @@ def solution(order, num, i):
                 heapq.heappop(heap_max)
 
 for _ in range(T):
-    k = int(input())
+    k = int(read())
     visited = [False] * 1000001
     heap_max, heap_min = [], []
 
     for i in range(k):
-        order, num = input().split(" ")
+        order, num = read().split(" ")
         solution(order, int(num), i)
 
     while heap_max and not visited[heap_max[0][1]]:
