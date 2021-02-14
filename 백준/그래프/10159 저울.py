@@ -1,7 +1,7 @@
-N, M = map(int, input().split(" "))
+N = int(input())
+M = int(input())
 INF = int(1e9)
 graph = [[INF] * (N+1) for _ in range(N+1)]
-
 
 
 def solution():
@@ -18,17 +18,14 @@ def solution():
                 if graph[j][k] + graph[k][i] < INF:
                     graph[j][i] = 1
 
-    check = True
+    count = 0
     ans = 0
 
     for i in range(1, N+1):
         for j in range(1, N+1):
             if graph[i][j] == INF and graph[j][i] == INF:
-                check = False
-                break
-        if check:
-            ans += 1
-        check = True
-    print(ans)
+                count += 1
+        print(count)
+        count = 0
 solution()
 
