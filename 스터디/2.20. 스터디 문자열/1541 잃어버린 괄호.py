@@ -32,6 +32,7 @@ def solution():
     arr += str(int(temp_arr[temp_arr_temp:]))
     ans += str(eval(arr))
 
+
     print(eval(ans))
 
 solution()
