@@ -19,8 +19,7 @@ def solution():
                     dp[j][i] = max(dp[j][i - 1], dp[j-1][i])
             else:
                 dp[j][i] = max(dp[j][i - 1], dp[j-1][i])
-    for i in range(len2):
-        print(dp[i])
+0
 
     print(dp[len2-1][len1-1])
 solution()
