@@ -43,7 +43,7 @@ def convert(s):
     for j in range(len(s)):
         if s[j] == "(":
             ans += ")"
-            continue
+            continue#
         elif s[j] == ")":
             ans += "("
             continue
