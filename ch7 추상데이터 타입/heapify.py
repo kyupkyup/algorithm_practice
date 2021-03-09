@@ -57,6 +57,7 @@ if __name__ == "__main__":
     maxHeap = MaxHeap()
     maxHeap.insert(10)
     maxHeap.insert(5)
+    maxHeap.delete()
 
 
     maxHeap.printHeap()
