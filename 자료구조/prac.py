@@ -1,12 +1,28 @@
-import heapq
+# class MinHeap:
+#     def __init__(self):
+#         self.arr = []
+#
+#     def insert(self, value):
+#         self.arr.append(value)
+#         i = len(self.arr) - 1
+#
+#         while i > 0:
+#             j = i // 2
+#             if self.arr[i] > self.arr[j]:
+#                 break
+#             else:
+#                 self.arr[i], self.arr[i] = self.arr[j], self.arr[i]
+#                 i = j
 
-a=[4,5,1,8,7,6,10]
-print(len(a))
-heapq.heapify(a)
-print(len(a))
-
-while a:
-    print(heapq.heappop(a))
-
-#[1, 5, 4, 8, 6, 7, 10]
-#[1, 5, 4, 8, 7, 6, 10]
+def solution(x, y):
+    ans = []
+    a = dict()
+    for i in y:
+        a[i] = 1
+    for j in x:
+        if j in a:
+            ans.append(True)
+        else:
+            ans.append(False)
+    return ans
+print(solution([1,2,3,33,2,2,1,1], [1,2]))
