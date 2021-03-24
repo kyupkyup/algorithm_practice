@@ -1,4 +1,8 @@
-arr = [2**x for x in range(1,6)] + [2**x for x in range(1, 5)]
+import array
 
+arr = array.array('l', [0] * 5)
+print(id(arr))
+brr = arr
+brr[0] = 1
+print(id(brr))
 
-print(arr)
