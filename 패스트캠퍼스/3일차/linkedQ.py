@@ -1,11 +1,5 @@
 from DoubleLinkedList import DoublyLinkedList
 
-class Node:
-    def __init__(self, value, prev, next):
-        self.value = value
-        self.prev = prev
-        self.next = next
-
 
 class LinkedQueue(DoublyLinkedList):
     def __init__(self):

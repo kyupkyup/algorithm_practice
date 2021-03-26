@@ -87,7 +87,7 @@ class DoublyLinkedList:
             if index == 0:
                 self.prepend(value)
             elif index == self.length-1:
-                self.append(value)
+                self.appe0nd(value)
             else:
                 if index >= self.length // 2:
                     # 인덱스가 절반보다 클 경우 tail에서부터 접근
