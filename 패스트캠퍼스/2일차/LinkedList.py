@@ -61,12 +61,11 @@ class SinglyLinkedList:
         else:
             if index == 0:
                 self.prepend(value)
-            else:
-                curr = self.head
-                for _ in range(index - 1):
-                    curr = curr.next
-                node = Node(value, curr.next)
-                curr.next = node
+            curr = self.head
+            for _ in range(index - 1):
+                curr = curr.next
+            node = Node(value, curr.next)
+            curr.next = node
 
     def remove(self, index):
         if self.length <= index or index < 0:
