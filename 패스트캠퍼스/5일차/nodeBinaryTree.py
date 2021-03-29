@@ -18,7 +18,6 @@ class BinaryTree:
                 node.left = node_list[left]
             if right < len(node_list):
                 node.right = node_list[right]
-
         self.root = node_list[0]
 
     def preorder(self):
@@ -97,21 +96,37 @@ class BinaryTree:
                 answer = True
                 return
 
-            if node.left == None:
+            if node.left is None:
                 return
             else:
                 recursive(node.left)
 
-            if node.right == None:
+            if node.right is None:
                 return
             else:
                 recursive(node.right)
+        if self.root is None:
+            return False
+
         recursive(self.root)
         return answer
-
-
         return False
 
+    def dfs_stack(self, value):
+        stack = []
+        stack.append(self.root)
+
+        while stack:
+            node = stack.pop()
+
+            if node.value == value:
+                return True
+            if node.right:
+                stack.append(node.right)
+            if node.left:
+                stack.append(node.right)
+
+        return False
 
 BT = BinaryTree([i for i in range(10)])
 BT.preorder()
