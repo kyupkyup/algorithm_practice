@@ -1,23 +1,55 @@
-class HashTable:
-    def __init__(self, hash_func):
-        self.hash_func = hash_func
-        self.hash_table = [None] * 3
+class Node:
+    def __init__(self, value, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
 
-    def set(self, key, value):
-        hash = self.hash_func(key)
-        self.hash_table[hash] = value
+class BinarySearchTree:
+    def __init__(self):
+        self.root = None
 
-    def get(self, key):
-        hash = self.hash_func(key)
-        return self.hash_table[hash]
+    def insert(self, value):
+        if self.root is None:
+            self.root = Node(value)
+        else:
+            curr = self.root
+            while curr is not None:
+                if curr.value == value:
+                    return False
 
-tb = HashTable(lambda num : (ord(num)+3) % 3)
+                elif value > curr.value:
+                    if curr.right is None:
+                        curr.right = Node(value)
+                        return
+                    curr = curr.right
+                elif value < curr.value:
+                    if curr.left is None:
+                        curr.left = Node(value)
+                        return
+                    curr = curr.left
 
-tb.set("a",0)
-tb.set("b",1)
-tb.set("c",2)
-tb.set("d",3)
+    def print_sorted(self):
+        def recursive(node):
+            if node is None:
+                return
+            else:
+                recursive(node.left)
+                print(node.value)
+                recursive(node.right)
+        recursive(self.root)
+        return
 
-for key in ["a", "b", "c", "d"]:
-    print(tb.get(key), end =" ")
-# 3 1 2 3
+bt = BinarySearchTree()
+
+bt.insert(2)
+bt.insert(10)
+bt.insert(20)
+bt.insert(0.5)
+bt.insert(1)
+bt.insert(4)
+bt.insert(3)
+bt.insert(5)
+bt.insert(7)
+bt.insert(-1)
+bt.insert(10)
+bt.print_sorted()

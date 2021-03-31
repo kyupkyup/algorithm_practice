@@ -98,7 +98,6 @@ class BinarySearchTree:
         isHere = False
         curr = self.root
         while curr is not None:
-
             if value == curr.value:
                 isHere = True
                 break
