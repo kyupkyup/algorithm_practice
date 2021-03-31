@@ -47,13 +47,10 @@ class Graph:
         def recursive(index):
             nonlocal ans
 
-
             print(index, end=" ")
             if self.vertices[index].value == value:
                 ans = True
                 return
-
-
 
             for adj_v_ind in range(len(self.vertices[index].adj_list)):
                 if not visited[self.vertices[index].adj_list[adj_v_ind]]:

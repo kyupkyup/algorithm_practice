@@ -1,6 +1,6 @@
-
 skill = "CBD"
 skill_trees = ["BACDE", "CBADF", "AECB", "BDA"]
+
 
 def solution(skill, skill_trees):
     answer = 0
@@ -16,4 +16,6 @@ def solution(skill, skill_trees):
             answer += 1
 
     return answer
+
+
 solution()
