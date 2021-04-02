@@ -138,7 +138,6 @@ class BinarySearchTree:
         elif curr.right is not None and curr.left is not None:
             if direction == "l":
                 parent.left = curr.right
-                parent.right = curr.right
                 temp = curr.left
                 curr = curr.right
                 while curr.left is not None:
