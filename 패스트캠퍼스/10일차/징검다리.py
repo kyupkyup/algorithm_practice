@@ -19,7 +19,7 @@ def solution(distance, rocks, n):
             j = i
             i += 1
         if count <= n:
-            answer = max(answer, mid)
+            answer = mid
             left = mid + 1
         else:
             right = mid - 1
