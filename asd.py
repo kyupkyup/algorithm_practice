@@ -1,55 +1,53 @@
 class Node:
-    def __init__(self, value, left=None, right=None):
+    def __init__(self, value):
         self.value = value
-        self.left = left
-        self.right = right
+        self.children = dict()
 
-class BinarySearchTree:
+class Trie:
     def __init__(self):
-        self.root = None
+        self.root = Node("")
 
-    def insert(self, value):
-        if self.root is None:
-            self.root = Node(value)
-        else:
-            curr = self.root
-            while curr is not None:
-                if curr.value == value:
-                    return False
+    def insert(self, data):
+        curr = self.root
+        for c in data:
+            if c not in curr.children:
+                curr.children[c] = Node(c)
+            curr = curr.children[c]
 
-                elif value > curr.value:
-                    if curr.right is None:
-                        curr.right = Node(value)
-                        return
-                    curr = curr.right
-                elif value < curr.value:
-                    if curr.left is None:
-                        curr.left = Node(value)
-                        return
-                    curr = curr.left
+        if "*" not in  curr.children:
+            curr.children["*"] = Node("*")
 
-    def print_sorted(self):
-        def recursive(node):
-            if node is None:
+
+
+    def get_all_words(self):
+
+        def recursive(node, ans):
+            if node.value == "*":
+                print(ans)
                 return
-            else:
-                recursive(node.left)
-                print(node.value)
-                recursive(node.right)
-        recursive(self.root)
+            ans += node.value
+            for i in node.children:
+                recursive(node.children[i], ans)
+        recursive(self.root, "")
         return
 
-bt = BinarySearchTree()
-
-bt.insert(2)
-bt.insert(10)
-bt.insert(20)
-bt.insert(0.5)
-bt.insert(1)
-bt.insert(4)
-bt.insert(3)
-bt.insert(5)
-bt.insert(7)
-bt.insert(-1)
-bt.insert(10)
-bt.print_sorted()
+tree = Trie()
+tree.insert("abaaa")
+tree.insert("abccc")
+tree.insert("abccd")
+tree.insert("caa")
+tree.insert("cca")
+print(tree.get_all_words())
+#
+#
+# def search(self):
+#     current_node = self.head
+#
+#     for char in string:
+#         if char in current_node.children:
+#             current_node = current_node.children[char]
+#         else:
+#             return False
+#
+#     if current_node.data:
+#         return current_node.data
