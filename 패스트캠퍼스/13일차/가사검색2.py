@@ -51,29 +51,23 @@ def solution(words, queries):
         length = len(word)
         if length not in length_reverse_dict:
             length_reverse_dict[length] = Trie()
-            length_reverse_dict[length].insert(word[::-1])
-        else:
-            length_reverse_dict[length].insert(word[::-1])
+        length_reverse_dict[length].insert(word[::-1])
         if length not in length_dict:
             length_dict[length] = Trie()
-            length_dict[length].insert(word)
-        else:
-            length_dict[length].insert(word)
+        length_dict[length].insert(word)
 
     for query in queries:
         length = len(query)
         if length not in length_dict and length not in length_reverse_dict:
             answer.append(0)
         else:
-            sum = 0
-            if word == "?"*length:
-                answer.append(length_dict[length][""])
+            if length == query.count("?"):
+                answer.append(length_dict[length].head.num_children)
             elif query[0] == "?":
                 reversed_query = query[::-1]
-                sum += length_reverse_dict[length].search(reversed_query)
+                answer.append(length_reverse_dict[length].search(reversed_query))
             else:
-                sum += length_dict[length].search(query)
-            answer.append(sum)
+                answer.append(length_dict[length].search(query))
     return answer
 
 words=["frodo", "front", "frost", "frozen", "frame", "kakao"]
