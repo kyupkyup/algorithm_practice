@@ -1,52 +1,26 @@
-class MinHeap:
-    def __init__(self):
-        self.arr = [None]
 
-    def push(self, val):
-        self.arr.append(val)
-        curr = len(self.arr) - 1
+    def solution(sentence, keyword, skips):
+        answer =""
+        p1=0
+        p2=0
 
-        while curr > 1:
-            parent = curr // 2
-            if self.need_swap(curr, parent):
-                self.swap(curr, parent)
-                curr = parent
-            else:
-                break
-    def need_swap(self, curr, parent):
-        if self.arr[curr] < self.arr[parent]:
-            return True
-        else:
-            return False
+        for skip in skips:
+            for i in range(skip):
+                if p1 >= len(sentence):
+                    return answer
+                answer += sentence[p1]
+                if keyword[p2] == sentence[p1]:
+                    p1+=1
+                    break
+                p1 += 1
+            answer += keyword[p2]
+            p2 = ((p2+1) % len(keyword))
+        while p1 < len(sentence):
+            answer += sentence[p1]
+            p1 += 1
+        return answer
 
-    def swap(self, curr, parent):
-        self.arr[curr], self.arr[parent] = self.arr[parent], self.arr[curr]
-
-    def push(self, val):
-        self.arr.append(val)
-        curr = len(self.arr) - 1
-
-        def recursive(curr):
-            if curr <= 1:
-                return
-            parent = curr // 2
-
-            if self.need_swap(curr, parent):
-                self.swap(curr, parent)
-                recursive(parent)
-            else:
-                return
-        recursive(curr)
-        return
-
-heap = MinHeap()
-heap2 = MinHeap()
-heap.push(1)
-heap.push(4)
-heap.push(3)
-heap.push(2)
-heap2.push_recursive(1)
-heap2.push_recursive(4)
-heap2.push_recursive(3)
-heap2.push_recursive(2)
-print()
+sentence = "encrypt this sentence"
+keyword = "something"
+skips = [0,1,3,2,1,2,0,3,0,2,4,1,3]
+print(solution(sentence, keyword, skips))
