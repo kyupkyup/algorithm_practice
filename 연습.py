@@ -1,16 +1,26 @@
 
-def func1(x):
-    a, b, c = x[0], x[1], x[2]
+    def solution(sentence, keyword, skips):
+        answer =""
+        p1=0
+        p2=0
 
-    key =  ord(a) + ord(b) * 1000 + ord(c) * 1000000
+        for skip in skips:
+            for i in range(skip):
+                if p1 >= len(sentence):
+                    return answer
+                answer += sentence[p1]
+                if keyword[p2] == sentence[p1]:
+                    p1+=1
+                    break
+                p1 += 1
+            answer += keyword[p2]
+            p2 = ((p2+1) % len(keyword))
+        while p1 < len(sentence):
+            answer += sentence[p1]
+            p1 += 1
+        return answer
 
-    return key
-
-print(func1("abc"))
-print(func1("aca"))
-print(func1("aca"))
-print(func1("Aaa"))
-print(func1("aAa"))
-print(func1("aaA"))
-print(func1("zzZ"))
-print(func1("ZZZ"))
+sentence = "encrypt this sentence"
+keyword = "something"
+skips = [0,1,3,2,1,2,0,3,0,2,4,1,3]
+print(solution(sentence, keyword, skips))

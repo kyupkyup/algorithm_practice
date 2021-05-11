@@ -19,7 +19,7 @@ def solution():
 
     for i in range(N):
         for j in range(N):
-            if arr[j][i] == 1:
+            if arr[j][i] == 1 or i==j:
                 dfs(i, j)
 
     for i in spot:

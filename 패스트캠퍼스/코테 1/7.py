@@ -20,13 +20,18 @@ def dijkstra(start, graph):
             if distances[adj_node] > new_dist:
                 distances[adj_node] = new_dist
                 heapq.heappush(heap, (new_dist, adj_node))
+
     return distances
 
-graph = [
-    [(2,5), (3,2)],
-    [(3,5),(4,3)],
-    [(0,3),(4,9)],
-    [(0,10), (4,2)],
-    [(2,13),(1,3)]
-]
-dijkstra(3, graph)
+
+ans = dijkstra(0, [[(1, 3), (5, 1)],
+[(3, 5), (0, 2)],
+[(4, 3)],
+[(1, 1)],
+[(3, 6)],
+[(3, 2)]])
+
+if float('inf') in ans:
+    print(-1)
+else:
+    print(max(ans))
