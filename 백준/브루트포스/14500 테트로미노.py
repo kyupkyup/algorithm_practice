@@ -6,9 +6,9 @@ def solution():
 
     def tetromino(x, y):
         answer = 0
-        if x + 1 < M and x + 2 < M and x + 3 < M:  # 가로 네 줄
+        if x + 3 < M:  # 가로 네 줄
             answer = max(answer, board[y][x] + board[y][x + 1] + board[y][x + 2] + board[y][x + 3])
-        if y + 1 < N and y + 2 < N and y + 3 < N:  # 세로y 네 줄
+        if  y + 3 < N:  # 세로y 네 줄
             answer = max(answer, board[y][x] + board[y + 1][x] + board[y + 2][x] + board[y + 3][x])
         if x + 1 < M and y + 1 < N:  # 네모난 모양
             answer = max(answer, board[y][x] + board[y][x + 1] + board[y + 1][x] + board[y + 1][x + 1])
