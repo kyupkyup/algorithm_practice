@@ -34,8 +34,6 @@ def solution():
             else:
                 answer = i + answer
 
-
-
         elif i == "2":
             if binary[p] == "1":
                 answer = "7" + answer
