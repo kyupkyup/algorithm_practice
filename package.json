@@ -1,0 +1,29 @@
+{
+  "name": "algorithm_practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "init.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kyupkyup/algorithm_practice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kyupkyup/algorithm_practice/issues"
+  },
+  "homepage": "https://github.com/kyupkyup/algorithm_practice#readme",
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.14.7",
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-html": "^6.1.2",
+    "eslint-plugin-import": "^2.22.1"
+  },
+  "dependencies": {
+    "babel-eslint": "^10.1.0"
+  }
+}
