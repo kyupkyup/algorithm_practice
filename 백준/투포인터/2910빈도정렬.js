@@ -1,3 +1,1 @@
-const solution = () => {
-
-};
+const solution = () => false;
