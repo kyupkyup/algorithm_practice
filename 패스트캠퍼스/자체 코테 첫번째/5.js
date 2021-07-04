@@ -15,14 +15,6 @@ const score = (arr1, cans) => {
     white2 += blackCount[0];
     black2 += blackCount[1];
   }
-  //   console.log(arr1);
-  //   console.log(cans);
-
-  //   console.log(arr1);
-  //   console.log(white1);
-  //   console.log(black1);
-  //   console.log(white2);
-  //   console.log(black2);
   return Math.min(Math.abs(black1 - white2), Math.abs(black2 - white1));
 };
 
