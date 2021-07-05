@@ -1,5 +1,5 @@
 function solution(block, board) {
-  let answer = -1;
+  let answer = 0;
   const obj = {
     0: [[0, 0], [0, 1], [0, 2], 1],
     1: [[0, 0], [1, 0], [2, 0], 3],
@@ -60,7 +60,8 @@ function solution(block, board) {
       }
     }
   }
+  console.log(answer);
   return answer;
 }
 
-solution(5, [[1, 0, 0, 0], [1, 0, 0, 1], [1, 1, 0, 1], [1, 1, 0, 1]]);
+solution(5, [[1, 0, 0, 1], [1, 0, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]]);
