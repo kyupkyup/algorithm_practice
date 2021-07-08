@@ -1,76 +1,63 @@
 function solution(board) {
   const dx = [0, 0, -1, 1];
   const dy = [1, -1, 0, 0];
-  let answer = Number.MAX_VALUE;
-
-  const bfs = board => {
-    let count = 0;
-    const dq = [];
-    const visited = [];
-    for (let j = 0; j < board.length; j++) {
-      const temp = [];
-      for (let i = 0; i < board.length; i++) {
-        temp.push(false);
-      }
-      visited.push(temp);
+  const dq = [];
+  const visited = [];
+  let answer = Number.MAX_SAFE_INTEGER;
+  for (let j = 0; j < board.length; j++) {
+    const temp = [];
+    for (let i = 0; i < board.length; i++) {
+      temp.push(false);
     }
-    for (let j = 0; j < board.length; j++) {
-      for (let i = 0; i < board.length; i++) {
-        if (board[j][i] === 1 && !visited[j][i]) {
-          dq.push([i, j]);
-          visited[j][i] = true;
-          count += 1;
-        }
-        while (dq.length > 0) {
-          const [x, y] = dq.shift();
-          for (let k = 0; k < 4; k++) {
-            const nx = x + dx[k];
-            const ny = y + dy[k];
-            if (nx >= 0 && nx < board.length && ny >= 0 && ny < board.length) {
-              if (!visited[ny][nx] && board[ny][nx] === 1) {
-                visited[ny][nx] = true;
-                dq.push([nx, ny]);
-              }
-            }
-          }
-        }
-      }
-    }
-    if (count > 1) return false;
-    return true;
-  };
+    visited.push(temp);
+  }
 
-  const dfs = (i, j, count, board) => {
-    const newBoard = [];
-    for (let m = 0; m < board.length; m++) {
-      newBoard.push(board[m].slice());
-    }
-    newBoard[j][i] = 1;
-
-    if (bfs(newBoard)) {
-      answer = Math.min(answer, count);
+  const dfs = (i, j) => {
+    if (board[j][i] === 0) {
       return;
     }
+
     for (let k = 0; k < 4; k++) {
       const nx = i + dx[k];
       const ny = j + dy[k];
       if (nx >= 0 && nx < board.length && ny >= 0 && ny < board.length) {
-        if (newBoard[ny][nx] === 0) {
-          dfs(nx, ny, count + 1, newBoard);
+        if (!visited[ny][nx] && board[ny][nx] === 1) {
+          visited[ny][nx] = true;
+          dq.push([[nx, ny], 0]);
+          dfs(nx, ny);
         }
       }
     }
   };
-
-  const count = 0;
+  let flag = false;
   for (let j = 0; j < board.length; j++) {
     for (let i = 0; i < board.length; i++) {
-      if (board[j][i] === 0) {
-        dfs(i, j, count + 1, board);
+      if (board[j][i] === 1) {
+        visited[j][i] = true;
+        dq.push([[i, j], 0]);
+        dfs(i, j);
+        flag = true;
+        break;
+      }
+    }
+    if (flag) break;
+  }
+
+  while (dq.length > 0) {
+    const [[x, y], count] = dq.shift();
+    for (let k = 0; k < 4; k++) {
+      const nx = x + dx[k];
+      const ny = y + dy[k];
+      if (nx >= 0 && nx < board.length && ny >= 0 && ny < board.length) {
+        if (!visited[ny][nx] && board[ny][nx] === 0) {
+          visited[ny][nx] = true;
+          dq.push([[nx, ny], count + 1]);
+        } else if (!visited[ny][nx] && board[ny][nx] === 1) {
+          answer = Math.min(answer, count);
+        }
       }
     }
   }
-
   return answer;
 }
 

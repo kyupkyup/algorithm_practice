@@ -44,4 +44,4 @@ function solution(s) {
   return [...RealAnswer].sort((a, b) => a[0] - b[0])[0][1];
 }
 
-console.log(solution(')'));
+console.log(solution('())()()()())())()()())()('));
